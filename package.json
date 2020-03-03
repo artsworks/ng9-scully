@@ -3,11 +3,14 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --ssl=true -o",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "static": "npx http-server -S -C ./ssl/cert.pem -K ./ssl/key.pem ./dist/static/",
+    "scully": "scully --removeStaticDist",
+    "scully:serve": "scully serve --ssl-cert=./ssl/cert.pem --ssl-key=./ssl/key.pem --ssl"
   },
   "private": true,
   "dependencies": {
@@ -19,6 +22,9 @@
     "@angular/platform-browser": "~9.0.1",
     "@angular/platform-browser-dynamic": "~9.0.1",
     "@angular/router": "~9.0.1",
+    "@scullyio/init": "0.0.23",
+    "@scullyio/ng-lib": "latest",
+    "@scullyio/scully": "latest",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
